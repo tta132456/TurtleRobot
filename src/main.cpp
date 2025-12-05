@@ -3,8 +3,6 @@
 
 Servo myServo; //create a Servo object for easy control
 const int SERVO_PIN = 12; // set according to which pin servo's data line is connected to
-// put function declarations here:
-int myFunction(int, int);
 
 void setup() {
   // put your setup code here, to run once:
@@ -14,17 +12,11 @@ void setup() {
 }
 
 void loop() {
-    for(int pos = 0; pos <= 180; pos++){
-    myServo.write(0); // set the servo to an angle between 0 and 180
-    delay(50); // wait 50 ms for the servo to be able to move
-    myServo.write(90); // set the servo to an angle between 0 and 180
+    for(int pos = 0; pos <= 90; pos++){
+    myServo.write(pos); // set the servo to an angle between 0 and 180
+    delay(10); // wait 50 ms for the servo to be able to move
 
     Serial.print("Moved to "); // print out a debug message saying where the servo moves to
-    Serial.println(90); 
+    Serial.println(pos); 
   }
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
 }
