@@ -2,7 +2,8 @@
 
         Gripper::Gripper(int servoPin){
             MyServo.attach(servoPin); //No need to track the servo pin, already set inside of MyServo
-            //Reset Servo Position to Open on init.
+            //Reset Servo Position to Open on init
+            IsServoOpen = true;
             Open();
         }
         //Linear close.
@@ -19,7 +20,7 @@
                 MyServo.write(pos); 
                 delay(10); 
             }
-            IsServoOpen = true;
+            IsServoOpen = false;
         }
      
         void Gripper::Grip(){
