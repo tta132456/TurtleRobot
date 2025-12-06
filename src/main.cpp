@@ -1,14 +1,15 @@
 #include <Arduino.h>
 #include "drivetrain.h"
+#include "gripper.h"
 #include <TurtleReceiver.h>
 
 NetController Controller;
 DriveTrain RobotDriveTrain(17,16,18,5,14,27,26,25);
+Gripper RobotGripper;
 
 void setup() {
   // put your setup code here, to run once:
   Controller.controllerSetup();
- 
 }
 
 
@@ -21,7 +22,10 @@ void loop() {
     RobotDriveTrain.RotateClockwise();
   } else if (Controller.getJoy1X() < 0){
     RobotDriveTrain.RotateCounterClockwise();
-  } else {
+  } else if(Controller.getJoy1Y()){
+    RobotGripper.Grip();
+  }
+  else {
     RobotDriveTrain.Stop();
   }
 }
