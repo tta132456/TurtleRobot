@@ -4,64 +4,76 @@
 DriveTrain::DriveTrain(int TopRightPin1, int TopRightPin2,int TopLeftPin1, int TopLeftPin2,
                int BottomRightPin1, int BottomRightPin2,
                int BottomLeftPin1, int BottomLeftPin2)
-    : top(TopRightPin1, TopRightPin2, TopLeftPin1, TopLeftPin2),
-      bottom(BottomRightPin1, BottomRightPin2, BottomLeftPin1, BottomLeftPin2)
+    : FrontRight(TopRightPin1, TopRightPin2),
+      FrontLeft(TopLeftPin1, TopLeftPin2),
+      BackRight(BottomRightPin1, BottomRightPin2),
+      BackLeft(BottomLeftPin1, BottomLeftPin2)
 {
 }
 
 
 void DriveTrain::Stop() {
-    top.Stop();
-
-    bottom.Stop();
+    FrontRight.Stop();
+    FrontLeft.Stop();
+    BackRight.Stop();
+    BackLeft.Stop();
 }
 
 void DriveTrain::MoveForwards() {
     // The top should rotate counter clockwise
     //01 For forwards
-    top.MoveForwardRight();
+    FrontRight.MoveForward();
 
-    top.MoveForwardLeft();
+    FrontLeft.MoveForward();
 
-    bottom.MoveForwardRight();
+    BackLeft.MoveForward();
 
-    bottom.MoveForwardLeft();
+    BackRight.MoveForward();
 }
 
 void DriveTrain::MoveBackwards() {
 
     //10 For backwards
-    top.MoveBackwardRight();
+    FrontRight.MoveBackwards();
 
-    top.MoveBackwardLeft();
+    FrontLeft.MoveBackwards();
 
-    bottom.MoveBackwardRight();
+    BackLeft.MoveBackwards();
 
-    bottom.MoveBackwardLeft();
+    BackRight.MoveBackwards();
 }
 
-void DriveTrain::RotateCounterClockwise(){
-    digitalWrite(top.RightPin1, LOW);
-    digitalWrite(top.RightPin2, HIGH);
+void DriveTrain::RotateCounterClockwise() {
+    FrontRight.MoveForward();
 
-    digitalWrite(top.LeftPin1, LOW);
-    digitalWrite(top.LeftPin2, HIGH);
+    BackRight.MoveForward();
 
-    digitalWrite(bottom.RightPin1, HIGH);
-    digitalWrite(bottom.RightPin2, LOW);
+    FrontLeft.MoveBackwards();
 
-    digitalWrite(bottom.LeftPin1, HIGH);
-    digitalWrite(bottom.LeftPin2, LOW);
-}
-
-// void DriveTrain::RotateClockwise(){
+    BackLeft.MoveBackwards();
     
-// }
+}
 
-// void DriveTrain::MoveRight(){
+void DriveTrain::RotateClockwise(){
+    FrontRight.MoveBackwards();
 
-// }
+    BackRight.MoveBackwards();
 
-// void DriveTrain::MoveLeft(){
+    FrontLeft.MoveForward();
 
-// }
+    BackLeft.MoveForward();
+}
+
+void DriveTrain::MoveRight(){
+    FrontRight.MoveBackwards();
+
+    BackRight.MoveForward();
+
+    FrontLeft.MoveForward();
+
+    BackLeft.MoveBackwards();
+}
+
+void DriveTrain::MoveLeft(){
+    
+}

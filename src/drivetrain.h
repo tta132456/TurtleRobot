@@ -1,12 +1,14 @@
 #ifndef DRIVETRAIN_H
 #define DRIVETRAIN_H
 
-#include "motordriver.h"  
+#include "motor.h"  
 
 class DriveTrain {
 private:
-    MotorDriver top;
-    MotorDriver bottom;
+    Motor FrontRight;
+    Motor FrontLeft;
+    Motor BackRight;
+    Motor BackLeft;
 
 public:
     DriveTrain(int TopRightPin1, int TopRightPin2,
@@ -19,6 +21,8 @@ public:
     void MoveBackwards();
     void RotateCounterClockwise();
     void RotateClockwise();
+    void MoveRight();
+    void MoveLeft();
 };
 
 #endif
