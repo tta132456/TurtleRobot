@@ -2,63 +2,47 @@
 #include <Arduino.h>
 
 MotorDriver::MotorDriver(int rightPin1, int rightPin2, int leftPin1, int leftPin2)
-    : RightPin1(rightPin1),
-      RightPin2(rightPin2),
-      LeftPin1(leftPin1),
-      LeftPin2(leftPin2)
-    {
-        pinMode(RightPin1, OUTPUT);
-        pinMode(RightPin2, OUTPUT);
-        pinMode(LeftPin1, OUTPUT);
-        pinMode(LeftPin2, OUTPUT);
-    }
+    : RightMotor(rightPin1, rightPin2),
+      LeftMotor(leftPin1, leftPin2){}
 
         void MotorDriver::MoveForwardRight(){
-            digitalWrite(RightPin1, LOW);
-            digitalWrite(RightPin2, HIGH);
+            RightMotor.moveFoward();
         }
 
         void MotorDriver::MoveForwardLeft(){
-            digitalWrite(LeftPin1, LOW);
-            digitalWrite(LeftPin2, HIGH);
+            LeftMotor.moveFoward();
         }
 
         void MotorDriver::MoveBackwardRight(){
-            digitalWrite(RightPin1, HIGH);
-            digitalWrite(RightPin2, LOW);
+            RightMotor.moveBackwards();
         }
 
         void MotorDriver::MoveBackwardLeft(){
-            digitalWrite(LeftPin1, HIGH);
-            digitalWrite(LeftPin2, LOW);
+            LeftMotor.moveBackwards();
         }
 
         void MotorDriver::Stop(){
-            digitalWrite(RightPin1, LOW);
-            digitalWrite(RightPin2, LOW);
-            digitalWrite(LeftPin1, LOW);
-            digitalWrite(LeftPin2, LOW);
+            RightMotor.stop();
+            LeftMotor.stop();
         }
         
-class Motor{
-    private:
-        int Pin1;
-        int Pin2;
 
-    Motor(int pin1, int pin2) : Pin1(pin1), Pin2(pin2){}
+Motor::Motor(int pin1, int pin2) : Pin1(pin1), Pin2(pin2){
+        pinMode(Pin1, OUTPUT);
+        pinMode(Pin2, OUTPUT);
+}
 
-    void moveFoward(){
+    void Motor::moveFoward(){
         digitalWrite(Pin1, LOW);
         digitalWrite(Pin2, HIGH);
     }
 
-    void moveBackwards(){
+    void Motor::moveBackwards(){
         digitalWrite(Pin1, HIGH);
         digitalWrite(Pin2, LOW);
     }
 
-    void stop(){
+    void Motor::stop(){
         digitalWrite(Pin1, LOW);
         digitalWrite(Pin2, LOW);
     }
-};

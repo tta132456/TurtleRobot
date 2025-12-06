@@ -2,8 +2,25 @@
 #define MOTORDRIVER_H
 #include <Arduino.h>
 
+class Motor{
+    private:
+        int Pin1;
+        int Pin2;
+
+    public:
+        Motor(int pin1, int pin2);
+
+        void moveFoward();
+
+        void moveBackwards();
+
+        void stop();
+};
+
 class MotorDriver{
     public:
+        Motor RightMotor;
+        Motor LeftMotor;
         int RightPin1; 
         int RightPin2; 
         int LeftPin1; 
@@ -22,5 +39,7 @@ class MotorDriver{
         void Stop();
 
 };
+
+
 
 #endif
