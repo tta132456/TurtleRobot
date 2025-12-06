@@ -1,35 +1,31 @@
-
 #include <Arduino.h>
-#include "driver.h"
+#include "drivetrain.h"
 
-#define LEFT_IN1 12
-#define LEFT_IN2 14
-#define RIGHT_IN1 4
-#define RIGHT_IN2 5
-#define LEFT_ENA 6
-#define RIGHT_ENB 7
-#define LEFT_SPEED 255
-#define RIGHT_SPEED 255
+#define RightTopMotorPin1 27
+#define RightTopMotorPin2 26
 
-MotorDriver motor(LEFT_IN1, LEFT_IN2, RIGHT_IN1, RIGHT_IN2, LEFT_ENA, RIGHT_ENB);
-void setup()
-{
-    Serial.begin(9600);
-    motor.begin();
+#define RightBottomMotorPin1 12
+#define RightBottomMotorPin2 14
+
+#define LeftTopMotorPin1 25
+#define LeftTopMotorPin2 33
+
+#define LeftBottomMotorPin1 32
+#define LeftBottomMotorPin2 35
+
+DriveTrain RobotDriveTrain(RightTopMotorPin1, RightTopMotorPin2, RightBottomMotorPin1,
+   RightBottomMotorPin2, LeftTopMotorPin1, LeftTopMotorPin2, LeftBottomMotorPin1, LeftBottomMotorPin2);
+
+
+void setup() {
+  // put your setup code here, to run once:
+  
 }
-void loop()
-{
-    // Check the direction of the motors
-    motor.setMotor(LEFT_SPEED, RIGHT_SPEED, true, true); // Set both motors to forward
-    Serial.println("Motors set to forward");
-    delay(2000);      // Wait for 2 seconds
-    motor.turnLeft(); // Turn left
-    Serial.println("Turning left");
-    delay(2000);       // Wait for 2 seconds
-    motor.turnRight(); // Turn right
-    Serial.println("Turning right");
-    delay(2000);      // Wait for 2 seconds
-    motor.backward(); // Move backward
-    Serial.println("Moving backward");
 
+
+void loop() {
+  // put your main code here, to run repeatedly:   
+  RobotDriveTrain.MoveForwards();
+  delay(5000);
+  RobotDriveTrain.Stop();
 }
