@@ -11,15 +11,9 @@ DriveTrain::DriveTrain(int TopRightPin1, int TopRightPin2,int TopLeftPin1, int T
 
 
 void DriveTrain::Stop() {
-    digitalWrite(top.RightPin1, LOW);
-    digitalWrite(top.RightPin2, LOW);
-    digitalWrite(top.LeftPin1, LOW);
-    digitalWrite(top.LeftPin2, LOW);
+    top.Stop();
 
-    digitalWrite(bottom.RightPin1, LOW);
-    digitalWrite(bottom.RightPin2, LOW);
-    digitalWrite(bottom.LeftPin1, LOW);
-    digitalWrite(bottom.LeftPin2, LOW);
+    bottom.Stop();
 }
 
 void DriveTrain::MoveForwards() {
