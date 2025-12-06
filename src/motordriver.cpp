@@ -39,3 +39,26 @@ MotorDriver::MotorDriver(int rightPin1, int rightPin2, int leftPin1, int leftPin
             digitalWrite(LeftPin1, LOW);
             digitalWrite(LeftPin2, LOW);
         }
+        
+class Motor{
+    private:
+        int Pin1;
+        int Pin2;
+
+    Motor(int pin1, int pin2) : Pin1(pin1), Pin2(pin2){}
+
+    void moveFoward(){
+        digitalWrite(Pin1, LOW);
+        digitalWrite(Pin2, HIGH);
+    }
+
+    void moveBackwards(){
+        digitalWrite(Pin1, HIGH);
+        digitalWrite(Pin2, LOW);
+    }
+
+    void stop(){
+        digitalWrite(Pin1, LOW);
+        digitalWrite(Pin2, LOW);
+    }
+};
