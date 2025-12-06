@@ -5,18 +5,20 @@
 
 class DriveTrain {
 private:
-    MotorDriver right;
-    MotorDriver left;
+    MotorDriver top;
+    MotorDriver bottom;
 
 public:
-    DriveTrain(int RightTopMotorPin1, int RightTopMotorPin2,
-               int RightBottomMotorPin1, int RightBottomMotorPin2,
-               int LeftTopMotorPin1, int LeftTopMotorPin2,
-               int LeftBottomMotorPin1, int LeftBottomMotorPin2);
+    DriveTrain(int TopRightPin1, int TopRightPin2,
+               int TopLeftPin1, int TopLeftPin2,
+               int BottomRightPin1, int BottomRightPin2,
+               int BottomLeftPin1, int BottomLeftPin2);
 
     void Stop();
     void MoveForwards();
     void MoveBackwards();
+    void RotateCounterClockwise();
+    void RotateClockwise();
 };
 
 #endif

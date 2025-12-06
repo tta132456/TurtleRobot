@@ -1,34 +1,72 @@
 #include "drivetrain.h"
 #include <Arduino.h>
 
-DriveTrain::DriveTrain(int RightTopMotorPin1, int RightTopMotorPin2, int RightBottomMotorPin1, int RightBottomMotorPin2,
-                       int LeftTopMotorPin1, int LeftTopMotorPin2, int LeftBottomMotorPin1, int LeftBottomMotorPin2)
-    : right(RightTopMotorPin1, RightTopMotorPin2, RightBottomMotorPin1, RightBottomMotorPin2),
-      left(LeftTopMotorPin1, LeftTopMotorPin2, LeftBottomMotorPin1, LeftBottomMotorPin2)
+DriveTrain::DriveTrain(int TopRightPin1, int TopRightPin2,int TopLeftPin1, int TopLeftPin2,
+               int BottomRightPin1, int BottomRightPin2,
+               int BottomLeftPin1, int BottomLeftPin2)
+    : top(TopRightPin1, TopRightPin2, TopLeftPin1, TopLeftPin2),
+      bottom(BottomRightPin1, BottomRightPin2, BottomLeftPin1, BottomLeftPin2)
 {
 }
 
+
 void DriveTrain::Stop() {
-    digitalWrite(right.TopMotorPin1, LOW);
-    digitalWrite(right.TopMotorPin2, LOW);
-    digitalWrite(left.TopMotorPin1, LOW);
-    digitalWrite(left.TopMotorPin2, LOW);
+    digitalWrite(top.RightPin1, LOW);
+    digitalWrite(top.RightPin2, LOW);
+    digitalWrite(top.LeftPin1, LOW);
+    digitalWrite(top.LeftPin2, LOW);
+
+    digitalWrite(bottom.RightPin1, LOW);
+    digitalWrite(bottom.RightPin2, LOW);
+    digitalWrite(bottom.LeftPin1, LOW);
+    digitalWrite(bottom.LeftPin2, LOW);
 }
 
 void DriveTrain::MoveForwards() {
-    digitalWrite(right.TopMotorPin1, HIGH);
-    digitalWrite(right.TopMotorPin2, LOW);
-    digitalWrite(left.TopMotorPin1, HIGH);
-    digitalWrite(left.TopMotorPin2, LOW);
+    // The top should rotate counter clockwise
+    //01 For forwards
+    digitalWrite(top.RightPin1, LOW);
+    digitalWrite(top.RightPin2, HIGH);
+
+    digitalWrite(top.LeftPin1, LOW);
+    digitalWrite(top.LeftPin2, HIGH);
+
+    digitalWrite(bottom.RightPin1, LOW);
+    digitalWrite(bottom.RightPin2, HIGH);
+
+    digitalWrite(bottom.LeftPin1, LOW);
+    digitalWrite(bottom.LeftPin2, HIGH);
 }
 
 void DriveTrain::MoveBackwards() {
 
+    //10 For backwards
+    digitalWrite(top.RightPin1, HIGH);
+    digitalWrite(top.RightPin2, LOW);
+
+    digitalWrite(top.LeftPin1, HIGH);
+    digitalWrite(top.LeftPin2, LOW);
+
+    digitalWrite(bottom.RightPin1, HIGH);
+    digitalWrite(bottom.RightPin2, LOW);
+
+    digitalWrite(bottom.LeftPin1, HIGH);
+    digitalWrite(bottom.LeftPin2, LOW);
 }
 
-// void DriveTrain::RotateCounterClockwise(){
+void DriveTrain::RotateCounterClockwise(){
+    digitalWrite(top.RightPin1, LOW);
+    digitalWrite(top.RightPin2, HIGH);
 
-// }
+    digitalWrite(top.LeftPin1, LOW);
+    digitalWrite(top.LeftPin2, HIGH);
+
+    digitalWrite(bottom.RightPin1, HIGH);
+    digitalWrite(bottom.RightPin2, LOW);
+
+    digitalWrite(bottom.LeftPin1, HIGH);
+    digitalWrite(bottom.LeftPin2, LOW);
+}
 
 // void DriveTrain::RotateClockwise(){
     

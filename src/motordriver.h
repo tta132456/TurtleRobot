@@ -1,14 +1,24 @@
 #ifndef MOTORDRIVER_H
 #define MOTORDRIVER_H
+#include <Arduino.h>
 
 class MotorDriver{
     public:
-        int TopMotorPin1; 
-        int TopMotorPin2; 
-        int BottomMotorPin1; 
-        int BottomMotorPin2;
+        int RightPin1; 
+        int RightPin2; 
+        int LeftPin1; 
+        int LeftPin2;
 
-        MotorDriver(int topMotorPin1, int topMotorPin2, int bottomMotorPin1, int bottomMotorPin2);
+        MotorDriver(int rightPin1, int rightPin2, int leftPin1, int leftPin2);
+
+        void MoveForwardRight();
+
+        void MoveForwardFrontLeft();
+
+        void MoveBackwardFrontRight();
+
+        void MoveBackwardFrontLeft();
+
 };
 
 #endif
