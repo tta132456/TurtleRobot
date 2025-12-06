@@ -5,7 +5,7 @@
 
 NetController Controller;
 DriveTrain RobotDriveTrain(17,16,18,5,14,27,26,25);
-Gripper RobotGripper;
+Gripper RobotGripper(0);
 
 void setup() {
   // put your setup code here, to run once:
@@ -22,7 +22,7 @@ void loop() {
     RobotDriveTrain.RotateClockwise();
   } else if (Controller.getJoy1X() < 0){
     RobotDriveTrain.RotateCounterClockwise();
-  } else if(Controller.getJoy1Y()){
+  } else if(Controller.getJoy1X() > 0){
     RobotGripper.Grip();
   }
   else {
