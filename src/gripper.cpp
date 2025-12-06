@@ -21,7 +21,7 @@ class Gripper{
             IsServoOpen = true;
         }
     public:
-        Servo MyServo;
+    
         Gripper(int servoPin){
             MyServo.attach(servoPin); //No need to track the servo pin, already set inside of MyServo
             //Reset Servo Position to Open on init.

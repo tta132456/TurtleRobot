@@ -1,22 +1,35 @@
+
 #include <Arduino.h>
-#include <ESP32Servo.h>
+#include "driver.h"
 
-Servo myServo; //create a Servo object for easy control
-const int SERVO_PIN = 12; // set according to which pin servo's data line is connected to
+#define LEFT_IN1 12
+#define LEFT_IN2 14
+#define RIGHT_IN1 4
+#define RIGHT_IN2 5
+#define LEFT_ENA 6
+#define RIGHT_ENB 7
+#define LEFT_SPEED 255
+#define RIGHT_SPEED 255
 
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(115200); // setup serial monitor with rate of 115200 bits per second
-  myServo.setPeriodHertz(50); // set PWM period, gotten from datasheet
-  myServo.attach(SERVO_PIN); // attaches the servo on pin 12 to the servo object
+MotorDriver motor(LEFT_IN1, LEFT_IN2, RIGHT_IN1, RIGHT_IN2, LEFT_ENA, RIGHT_ENB);
+void setup()
+{
+    Serial.begin(9600);
+    motor.begin();
 }
+void loop()
+{
+    // Check the direction of the motors
+    motor.setMotor(LEFT_SPEED, RIGHT_SPEED, true, true); // Set both motors to forward
+    Serial.println("Motors set to forward");
+    delay(2000);      // Wait for 2 seconds
+    motor.turnLeft(); // Turn left
+    Serial.println("Turning left");
+    delay(2000);       // Wait for 2 seconds
+    motor.turnRight(); // Turn right
+    Serial.println("Turning right");
+    delay(2000);      // Wait for 2 seconds
+    motor.backward(); // Move backward
+    Serial.println("Moving backward");
 
-void loop() {
-    for(int pos = 0; pos <= 90; pos++){
-    myServo.write(pos); // set the servo to an angle between 0 and 180
-    delay(10); // wait 50 ms for the servo to be able to move
-
-    Serial.print("Moved to "); // print out a debug message saying where the servo moves to
-    Serial.println(pos); 
-  }
 }
