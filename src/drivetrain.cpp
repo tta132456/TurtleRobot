@@ -25,33 +25,25 @@ void DriveTrain::Stop() {
 void DriveTrain::MoveForwards() {
     // The top should rotate counter clockwise
     //01 For forwards
-    digitalWrite(top.RightPin1, LOW);
-    digitalWrite(top.RightPin2, HIGH);
+    top.MoveForwardRight();
 
-    digitalWrite(top.LeftPin1, LOW);
-    digitalWrite(top.LeftPin2, HIGH);
+    top.MoveForwardLeft();
 
-    digitalWrite(bottom.RightPin1, LOW);
-    digitalWrite(bottom.RightPin2, HIGH);
+    bottom.MoveForwardRight();
 
-    digitalWrite(bottom.LeftPin1, LOW);
-    digitalWrite(bottom.LeftPin2, HIGH);
+    bottom.MoveForwardLeft();
 }
 
 void DriveTrain::MoveBackwards() {
 
     //10 For backwards
-    digitalWrite(top.RightPin1, HIGH);
-    digitalWrite(top.RightPin2, LOW);
+    top.MoveBackwardRight();
 
-    digitalWrite(top.LeftPin1, HIGH);
-    digitalWrite(top.LeftPin2, LOW);
+    top.MoveBackwardLeft();
 
-    digitalWrite(bottom.RightPin1, HIGH);
-    digitalWrite(bottom.RightPin2, LOW);
+    bottom.MoveBackwardRight();
 
-    digitalWrite(bottom.LeftPin1, HIGH);
-    digitalWrite(bottom.LeftPin2, LOW);
+    bottom.MoveBackwardLeft();
 }
 
 void DriveTrain::RotateCounterClockwise(){

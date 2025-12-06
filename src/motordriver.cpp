@@ -13,3 +13,29 @@ MotorDriver::MotorDriver(int rightPin1, int rightPin2, int leftPin1, int leftPin
         pinMode(LeftPin2, OUTPUT);
     }
 
+        void MotorDriver::MoveForwardRight(){
+            digitalWrite(RightPin1, LOW);
+            digitalWrite(RightPin2, HIGH);
+        }
+
+        void MotorDriver::MoveForwardLeft(){
+            digitalWrite(LeftPin1, LOW);
+            digitalWrite(LeftPin2, HIGH);
+        }
+
+        void MotorDriver::MoveBackwardRight(){
+            digitalWrite(RightPin1, HIGH);
+            digitalWrite(RightPin2, LOW);
+        }
+
+        void MotorDriver::MoveBackwardLeft(){
+            digitalWrite(LeftPin1, HIGH);
+            digitalWrite(LeftPin2, LOW);
+        }
+
+        void MotorDriver::Stop(){
+            digitalWrite(RightPin1, LOW);
+            digitalWrite(RightPin2, LOW);
+            digitalWrite(LeftPin1, LOW);
+            digitalWrite(LeftPin2, LOW);
+        }

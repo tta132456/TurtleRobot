@@ -13,11 +13,13 @@ class MotorDriver{
 
         void MoveForwardRight();
 
-        void MoveForwardFrontLeft();
+        void MoveForwardLeft();
 
-        void MoveBackwardFrontRight();
+        void MoveBackwardRight();
 
-        void MoveBackwardFrontLeft();
+        void MoveBackwardLeft();
+
+        void Stop();
 
 };
 
