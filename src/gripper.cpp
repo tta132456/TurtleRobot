@@ -1,7 +1,5 @@
 #include <ESP32Servo.h>
-
 class Gripper{
-
     private:
         Servo MyServo;
         bool IsServoOpen;
@@ -12,6 +10,7 @@ class Gripper{
                 MyServo.write(pos); 
                 delay(10); 
             }
+            IsServoOpen = true;
         }   
 
         void Close(){
@@ -19,13 +18,14 @@ class Gripper{
                 MyServo.write(pos); 
                 delay(10); 
             }
+            IsServoOpen = true;
         }
     public:
         Servo MyServo;
         Gripper(int servoPin){
             MyServo.attach(servoPin); //No need to track the servo pin, already set inside of MyServo
-
-            //TODO.Reset Servo Position to Open on init.
+            //Reset Servo Position to Open on init.
+            Open();
         }
 
         void Grip(){
