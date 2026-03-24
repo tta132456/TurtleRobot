@@ -6,10 +6,10 @@ from a shared space to their team's safe place. Once in the safe space, the team
 ## Skills and Tools Used
 
 * CAD Design (SolidWorks)
-* 3D Printing (Bamboo Labs Slicer and Printers)
+* 3D Printing (Bambu Labs Slicer and Printers)
 * ESP32 Microcontroller
 * Arduino Programming
-* Work Shop Tools (fasteners, dril bits, etc)
+* Work Shop Tools (fasteners, drill bits, etc)
 * Wiring/Breadboarding
 
 ## Features
