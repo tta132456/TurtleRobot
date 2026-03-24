@@ -18,7 +18,7 @@ from a shared space to their team's safe place. Once in the safe space, the team
 * Pulley: Has railings such that the servo cage can run up and down, thus allowing blocks to stack. An electrically controlled motor causes a length of fishwire to spool or unspool around a 3D printed pulley wheel.
 * Mecanum Wheels: Enabled rotation of the robot to complete turns based off adjustment of each individual wheel speed.
 
-##Parts
+## Parts
 * 1 Servo
 * 5 Electrical Motors
 * 2 Motor Drivers
